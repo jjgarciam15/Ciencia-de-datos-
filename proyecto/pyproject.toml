@@ -1,18 +1,17 @@
 [project]
 name = "proyecto"
 version = "0.1.0"
-description = "Add your description here"
+description = "Dashboard educativo para explorar archivos CSV con Streamlit"
 readme = "README.md"
 authors = [
     { name = "jjgarciam15", email = "j.jgarciam15@gmail.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "numpy>=2.4.3",
+    "pandas>=2.3.3",
     "streamlit>=1.61.1",
 ]
-
-[project.scripts]
-proyecto = "proyecto:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
