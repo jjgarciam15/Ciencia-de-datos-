@@ -7,6 +7,8 @@ Aplicación educativa construida con [Streamlit](https://streamlit.io/) para exp
 ```text
 .
 ├── README.md
+├── Dockerfile
+├── .dockerignore
 ├── .gitignore
 └── proyecto/
     ├── Makefile
@@ -21,6 +23,7 @@ Aplicación educativa construida con [Streamlit](https://streamlit.io/) para exp
 - `pyproject.toml`: metadatos y dependencias directas.
 - `uv.lock`: versiones resueltas para instalaciones reproducibles.
 - `Makefile`: atajos para instalar, validar y ejecutar.
+- `Dockerfile`: imagen preparada para servir Streamlit en el puerto 8501.
 
 ## Requisitos
 
@@ -39,7 +42,7 @@ Desde la raíz del repositorio:
 
 ```bash
 cd proyecto
-uv sync --locked
+uv sync
 uv run streamlit run src/proyecto/app.py
 ```
 
@@ -74,7 +77,7 @@ Los CSV cargados se procesan en memoria durante la sesión. La aplicación no im
 proyecto/src/proyecto/app.py
 ```
 
-Streamlit Cloud instalará las dependencias declaradas en `proyecto/pyproject.toml`. Si el servicio no detecta el archivo por estar en un subdirectorio, configura el directorio de trabajo como `proyecto`.
+Streamlit Community Cloud instalará las dependencias declaradas en `proyecto/pyproject.toml`. Configura `proyecto` como directorio de trabajo si la interfaz de despliegue lo solicita.
 
 ## Desplegar con Docker
 
@@ -90,13 +93,13 @@ Ejecuta el contenedor:
 docker run --rm -p 8501:8501 laboratorio-datos
 ```
 
-Después abre `http://localhost:8501`.
+Después abre `http://localhost:8501`. Para un servidor remoto, publica el puerto 8501 detrás de HTTPS o de un proxy inverso.
 
 ## Comprobación rápida
 
 ```bash
 cd proyecto
-uv sync --locked
+uv sync
 uv run python -m compileall -q src
 uv run streamlit run src/proyecto/app.py
 ```
