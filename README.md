@@ -7,6 +7,7 @@ Aplicación educativa construida con [Streamlit](https://streamlit.io/) para exp
 ```text
 .
 ├── README.md
+├── requirements.txt
 ├── Dockerfile
 ├── .dockerignore
 ├── .gitignore
@@ -22,6 +23,7 @@ Aplicación educativa construida con [Streamlit](https://streamlit.io/) para exp
 - `app.py`: interfaz y lógica del dashboard.
 - `pyproject.toml`: metadatos y dependencias directas.
 - `uv.lock`: versiones resueltas para instalaciones reproducibles.
+- `requirements.txt`: dependencias detectables desde la raíz por servicios de despliegue.
 - `Makefile`: atajos para instalar, validar y ejecutar.
 - `Dockerfile`: imagen preparada para servir Streamlit en el puerto 8501.
 
@@ -77,7 +79,7 @@ Los CSV cargados se procesan en memoria durante la sesión. La aplicación no im
 proyecto/src/proyecto/app.py
 ```
 
-Streamlit Community Cloud instalará las dependencias declaradas en `proyecto/pyproject.toml`. Configura `proyecto` como directorio de trabajo si la interfaz de despliegue lo solicita.
+Streamlit Community Cloud instalará las dependencias desde el `requirements.txt` de la raíz. No es necesario mover el archivo principal ni configurar otro directorio de trabajo.
 
 ## Desplegar con Docker
 
